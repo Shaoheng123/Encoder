@@ -1,6 +1,6 @@
 package Cipher;
 
-public class CipherFactory {
+public class CipherFactory implements Factory {
     private static CipherFactory instance;
     public static CipherFactory getInstance(){
         if(instance == null){

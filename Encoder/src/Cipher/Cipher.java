@@ -1,8 +1,7 @@
 package Cipher;
 public class Cipher {
 
-//    private final Character firstChar;
-//    private final int offset;
+
     private final String toEncode;
     private final String plainOrEncoded;
     public Cipher(String plainOrEncoded,String toEncode) {
