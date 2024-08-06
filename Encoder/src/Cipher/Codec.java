@@ -3,22 +3,20 @@ package Cipher;
 public class Codec {
 
     private String referenceTable;
-    private int firstChar;
-    private String encode;
+    private String encodeOrDecode;
     private String text;
 
-    public Codec(String text, String encode) {
+    public Codec(String text, String encodeOrDecode) {
         ApplicationProperties applicationProperties = new ApplicationProperties();
         this.referenceTable =  applicationProperties.getReferenceTable();
-        this.encode = encode;
+        this.encodeOrDecode = encodeOrDecode;
         this.text=text;
 
     }
 
     public String codec (){
 
-        int index;
-
+        int newIndex;
         int referenceTableLength = referenceTable.length();
         Character firstChar = getFirstChar(text);
         int offset = referenceTable.indexOf(firstChar);
@@ -32,16 +30,16 @@ public class Codec {
                 sb.insert(i, removedOffsetCharacterText.charAt(i));
                 continue;
             }
-
-            if(encode.equals(CodecEnum.ENCODE.toString())) {
-                index = indexOfElementInTable - offset;
+            if(encodeOrDecode.equals(CodecEnum.ENCODE.toString())) {
+                newIndex = indexOfElementInTable - offset;
             } else{
-                index = indexOfElementInTable + offset;
+                newIndex = indexOfElementInTable + offset;
             }
-            if( index < 0){
-                index += referenceTableLength;
+            if( newIndex < 0){
+                newIndex += referenceTableLength;
             }
-            sb.insert(i, referenceTable.charAt((index) % referenceTableLength));
+            //insert character 
+            sb.insert(i, referenceTable.charAt((newIndex) % referenceTableLength));
         }
         return sb.toString();
     }

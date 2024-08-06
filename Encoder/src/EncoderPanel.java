@@ -10,7 +10,6 @@ public class EncoderPanel extends JFrame implements ActionListener {
 
     private JButton encodeButton;
     private JButton decodeButton;
-
     private JTextField encodeText;
     private JTextField decodeText;
     private JTextField outputField;
@@ -70,16 +69,18 @@ public class EncoderPanel extends JFrame implements ActionListener {
                 outputField.setText("");
                 return;
             }
-            CipherFactory cipherFactory = new CipherFactory();
+
+            CipherFactory cipherFactory = CipherFactory.getInstance();
             Cipher cipher = cipherFactory.createCipher(textToEncode, encodeButton.getText());
             outputField.setText(cipher.codec());
         } else {
+
             String textToDecode = decodeText.getText().toUpperCase();
             if(textToDecode.equals("")){
                 outputField.setText("");
                 return;
             }
-            CipherFactory cipherFactory = new CipherFactory();
+            CipherFactory cipherFactory = CipherFactory.getInstance();
             Cipher cipher = cipherFactory.createCipher(textToDecode, decodeButton.getText());
             outputField.setText(cipher.codec());
         }

@@ -9,7 +9,7 @@ public class ApplicationProperties {
     public ApplicationProperties() {
 
         properties = new Properties();
-        // Load properties from file (e.g., config.properties)
+        // Load properties from config file
         // Initialize 'properties' field
             try (InputStream inputStream = getClass().getResourceAsStream("/resources/config.properties")) {
                 properties.load(inputStream);
