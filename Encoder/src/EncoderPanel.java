@@ -1,3 +1,4 @@
+import Cipher.CipherFactory;
 import Cipher.Cipher;
 import Cipher.ApplicationProperties;
 import javax.swing.*;
@@ -69,16 +70,18 @@ public class EncoderPanel extends JFrame implements ActionListener {
                 outputField.setText("");
                 return;
             }
-            Cipher cipher = new Cipher(textToEncode,encodeButton.getText());
-            outputField.setText(cipher.codec(textToEncode));
+            CipherFactory cipherFactory = new CipherFactory();
+            Cipher cipher = cipherFactory.createCipher(textToEncode, encodeButton.getText());
+            outputField.setText(cipher.codec());
         } else {
             String textToDecode = decodeText.getText().toUpperCase();
             if(textToDecode.equals("")){
                 outputField.setText("");
                 return;
             }
-            Cipher doStuff = new Cipher(textToDecode,decodeButton.getText());
-            outputField.setText(doStuff.codec(textToDecode));
+            CipherFactory cipherFactory = new CipherFactory();
+            Cipher cipher = cipherFactory.createCipher(textToDecode, decodeButton.getText());
+            outputField.setText(cipher.codec());
         }
     }
 }

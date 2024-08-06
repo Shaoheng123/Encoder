@@ -5,15 +5,17 @@ public class Codec {
     private String referenceTable;
     private int firstChar;
     private String encode;
+    private String text;
 
-    public Codec(String textToEncode, String encode) {
+    public Codec(String text, String encode) {
         ApplicationProperties applicationProperties = new ApplicationProperties();
         this.referenceTable =  applicationProperties.getReferenceTable();
         this.encode = encode;
+        this.text=text;
 
     }
 
-    public String codec (String text){
+    public String codec (){
 
         int index;
 

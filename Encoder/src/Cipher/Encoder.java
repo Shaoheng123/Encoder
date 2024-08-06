@@ -2,25 +2,20 @@ package Cipher;
 
 public class Encoder implements SymmetricEncryption {
 
-
-    private String textToCodec;
-
-    public Encoder(String textToCodec) {
-        this.textToCodec = textToCodec;
-    }
-
     @Override
-    public String encode(String textToEncode) {
+    public String encode(String plainText) {
         String encode = CodecEnum.ENCODE.toString();
-        Codec codec = new Codec(textToEncode,encode);
-        return codec.codec(textToEncode);
+        Codec codec = new Codec(plainText,encode);
+        return codec.codec();
     }
 
+
+
     @Override
-    public String decode(String textToDecode) {
+    public String decode(String encodedText) {
         String decode = CodecEnum.DECODE.toString();
-        Codec codec = new Codec(textToDecode,decode);
-        return codec.codec(textToDecode);
+        Codec codec = new Codec(encodedText,decode);
+        return codec.codec();
     }
 
 

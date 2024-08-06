@@ -1,24 +1,23 @@
 package Cipher;
 public class Cipher {
 
-    private String referenceTable;
-    private Character firstChar;
-    String toEncode;
+//    private final Character firstChar;
+//    private final int offset;
+    private final String toEncode;
+    private final String plainOrEncoded;
+    public Cipher(String plainOrEncoded,String toEncode) {
+        this.plainOrEncoded = plainOrEncoded;
+        this.toEncode = toEncode;
+    }
 
-
-    public Cipher(String plainText, String encode) {
-            toEncode = encode;
-        }
-
-    public String codec (String plainOrEncoded) {
+    public String codec () {
         //remove first Character
-        Encoder encoder = new Encoder(plainOrEncoded);
+        Encoder encoder = new Encoder();
         if(toEncode.equals(CodecEnum.ENCODE.toString())) {
             return encoder.encode(plainOrEncoded);
         }
         return encoder.decode(plainOrEncoded);
     }
-
 
 
 }
